@@ -1,2 +1,6 @@
-GRAZPEDWRI-DX/data/images/*
-GRAZPEDWRI-DX/data/labels/*
+GRAZPEDWRI-DX/data/images/test/*
+GRAZPEDWRI-DX/data/images/train/*
+GRAZPEDWRI-DX/data/images/valid/*
+GRAZPEDWRI-DX/data/labels/test/*
+GRAZPEDWRI-DX/data/labels/train/*
+GRAZPEDWRI-DX/data/labels/valid/*
