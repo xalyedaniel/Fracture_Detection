@@ -6,3 +6,5 @@ GRAZPEDWRI-DX/data/labels/test/*
 GRAZPEDWRI-DX/data/labels/train/*
 GRAZPEDWRI-DX/data/labels/train_aug/*
 GRAZPEDWRI-DX/data/labels/valid/*
+yolov8n.pt
+bus.jpg
