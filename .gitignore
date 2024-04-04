@@ -12,3 +12,4 @@ yolov8n.pt
 bus.jpg
 **/.DS_Store
 **/GTSRB
+**/GTSDB
