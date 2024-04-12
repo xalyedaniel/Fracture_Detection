@@ -87,3 +87,29 @@ You can set the value in the `./ultralytics/cfg/default.yaml`.
 ```
   python start_train.py --model ./ultralytics/cfg/models/v8/yolov8m_ResBlock_CBAM.yaml --data_dir ./GRAZPEDWRI-DX/data/meta.yaml
 ```
+
+### FracAtlas Dataset
+To download the FracAtlas dataset, run
+
+```bash
+./download_fracatlas.sh
+```
+
+Then move the meta.yaml file to the data folder
+
+```bash
+mv meta.yaml FracAtlas/
+```
+
+Then to split and augment the data, run:
+
+```bash
+python FracAtlas_Split.py
+./FracAtlas_Aug.sh
+```
+
+Then you can begin training with the following command:
+
+```bash
+python start_train.py --model ./ultralytics/cfg/models/v8/yolov8m.yaml --data_dir ./FracAtlas/meta.yaml
+```

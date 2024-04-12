@@ -34,7 +34,7 @@ if __name__ == '__main__':
             pic_turn = cv2.addWeighted(pic, contrast, pic, 0, brightness)
             cv2.imwrite(output_imgdir  + img_name, pic)
             cv2.imwrite(output_imgdir + 'aug_' + img_name, pic_turn)
-            cv2.waitKey(0)
+            # cv2.waitKey(0)
 
     for root, dirs, files in os.walk(input_labeldir):
         for name in files:
