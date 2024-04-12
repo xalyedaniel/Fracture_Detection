@@ -1,0 +1,19 @@
+# NOTE: MOVE this file to the root of ./FracAtlas once it is downloaded.
+
+path: "/path/to/Fracture_Detection/FracAtlas"
+
+# test_1: fractured and non-fractured combined
+# train: "images/train_aug"
+# val: "images/valid"
+# test: "images/test"
+
+# test_2: only fractured images
+train: "YOLO_FracSplit/images/train_aug"
+val: "YOLO_FracSplit/images/val"
+test: "YOLO_FracSplit/images/test"
+
+# number of categories
+nc: 1
+# category names
+names:
+  0: fractured

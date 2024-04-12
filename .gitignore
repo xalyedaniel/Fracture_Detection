@@ -13,3 +13,5 @@ bus.jpg
 **/.DS_Store
 **/GTSRB
 **/GTSDB
+**/FracAtlas
+**/__pycache__/
