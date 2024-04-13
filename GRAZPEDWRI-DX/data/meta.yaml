@@ -1,5 +1,5 @@
 # patch: /path/to/GRAZPEDWRI-DX/data
-path: '/path/to/GRAZPEDWRI-DX/data'
+path: 'C:/EC523/Fracture_Detection/GRAZPEDWRI-DX/data'
 train: 'images/train_aug'
 val: 'images/valid'
 test: 'images/test'
