@@ -113,3 +113,34 @@ Then you can begin training with the following command:
 ```bash
 python start_train.py --model ./ultralytics/cfg/models/v8/yolov8m.yaml --data_dir ./FracAtlas/meta.yaml
 ```
+
+
+       ultralytics
+          └── cfg
+          │    ├── modules/v8
+          │         ├── yolov8_A2.yaml
+          │         └── ...
+          └── nn
+               ├── modules
+               │    ├── conv.py
+               │    ├── __init__.py
+               │    └── ...
+               │    
+               └── tasks.py
+
+
+Add attention models to basic yolov8. 
+
+add code of addtetion models under ``\ultralytics\nn\modules\conv.py``
+
+Register and import the model under ``ultralytics\nn\modules\__init__.py``
+
+Import and invocation the model under ``\ultralytics\nn\tasks.py`` and it's ``parse_model``
+
+create ``.yaml`` file under ``\ultralytics\cfg\models\v8``
+
+## If getting error ``keyerror:"example-model"``
+
+you need copy and paste your ``conv.py`` ``__init__.py`` and ``tasks.py`` to the ultralytics package you used in your python environment and replace same .py file
+
+For expample mine is under ``python39/Lib/sit-packages/ultralytics/nn/modules/``
