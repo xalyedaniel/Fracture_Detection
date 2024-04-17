@@ -2,7 +2,7 @@
 
 
 ## Requirements
-* Linux (Ubuntu) or Windows10/11
+* MacOS (use MPS GPU, need enough memory though), Linux (Ubuntu) or Windows10/11
 * Python = 3.9 or 3.10
 * Pytorch = 1.13.1
 * NVIDIA GPU + CUDA CuDNN
