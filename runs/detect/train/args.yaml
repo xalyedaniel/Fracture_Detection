@@ -2,14 +2,14 @@ task: detect
 mode: train
 model: ./ultralytics/cfg/models/v8/yolov8m.yaml
 data: ./FracAtlas/meta.yaml
-epochs: 20
+epochs: 10
 patience: 50
 batch: 16
 imgsz: 640
 save: true
 save_period: -1
 cache: false
-device: mps
+device: 1
 workers: 8
 project: null
 name: null
@@ -93,4 +93,4 @@ mixup: 0.0
 copy_paste: 0.0
 cfg: null
 tracker: botsort.yaml
-save_dir: /Users/rithvikdoshi/Documents/BU/Senior/Spring/CS523/Project.nosync/Fracture_Detection/runs/detect/train
+save_dir: /projectnb/dl523/students/rithvik/Fracture_Detection/runs/detect/train
