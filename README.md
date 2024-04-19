@@ -6,6 +6,7 @@
 * Python = 3.9 or 3.10
 * Pytorch = 1.13.1
 * NVIDIA GPU + CUDA CuDNN
+* FracAtlas experiments trained on NVIDIA L40S using BU SCC
 
 ## Environment
 ```
