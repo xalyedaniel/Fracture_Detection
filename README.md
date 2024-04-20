@@ -114,20 +114,58 @@ Then you can begin training with the following command:
 python start_train.py --model ./ultralytics/cfg/models/v8/yolov8m.yaml --data_dir ./FracAtlas/meta.yaml
 ```
 
+Here's a look at the dataset tree:
 
-       ultralytics
-          └── cfg
-          │    ├── modules/v8
-          │         ├── yolov8_A2.yaml
-          │         └── ...
-          └── nn
-               ├── modules
-               │    ├── conv.py
-               │    ├── __init__.py
-               │    └── ...
-               │    
-               └── tasks.py
+```
+FracAtlas
+├── Annotations
+│   ├── COCO JSON
+│   │   └── COCO_fracture_masks.json
+│   ├── PASCAL VOC
+│   ├── VGG JSON
+│   │   └── VGG_fracture_masks.json
+│   └── YOLO
+├── Utilities
+│   ├── Fracture Split
+│   │   ├── test.csv
+│   │   ├── train.csv
+│   │   └── valid.csv
+│   ├── coco2yolo.ipynb
+│   └── yolo2voc.ipynb
+├── YOLO_FracSplit
+│   ├── images
+│   │   ├── test
+│   │   ├── train
+│   │   ├── train_aug
+│   │   └── val
+│   └── labels
+│       ├── test
+│       ├── train
+│       ├── train_aug
+│       ├── train_aug.cache
+│       ├── val
+│       └── val.cache
+├── dataset.csv
+├── images
+│   ├── Fractured
+│   └── Non_fractured
+└── meta.yaml
+```
 
+```
+ ultralytics
+    └── cfg
+    │    ├── modules/v8
+    │         ├── yolov8_A2.yaml
+    │         └── ...
+    └── nn
+         ├── modules
+         │    ├── conv.py
+         │    ├── __init__.py
+         │    └── ...
+         │    
+         └── tasks.py
+```
 
 Add attention models to basic yolov8. 
 
