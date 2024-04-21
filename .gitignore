@@ -23,3 +23,4 @@ GRAZ_dset/data/labels/*
 GRAZ_dset/notebooks/*
 GRAZ_dset/pascalvoc/*
 GRAZ_dset/supervisely/*
+wandb/
