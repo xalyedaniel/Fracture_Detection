@@ -1,0 +1,16 @@
+path: '/projectnb/dl523/students/rithvik/Fracture_Detection/GRAZ_dset/'
+train: 'data/images/train_aug'
+val: 'data/images/valid'
+test: 'data/images/test'
+
+nc: 9
+names:
+  0: boneanomaly
+  1: bonelesion
+  2: foreignbody
+  3: fracture
+  4: metal
+  5: periostealreaction
+  6: pronatorsign
+  7: softtissue
+  8: text

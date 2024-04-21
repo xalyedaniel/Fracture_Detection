@@ -1,0 +1,15 @@
+names:
+- boneanomaly
+- bonelesion
+- foreignbody
+- fracture
+- metal
+- periostealreaction
+- pronatorsign
+- softtissue
+- text
+nc: 9
+path: 'FILL IN'
+train: 'FILL IN'
+val: 'FILL IN'
+test: 'FILL IN'
