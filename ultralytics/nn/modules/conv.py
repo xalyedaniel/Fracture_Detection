@@ -656,3 +656,109 @@ class GatherExcite(nn.Module):
         if x_ge.shape[-1] != 1 or x_ge.shape[-2] != 1:
             x_ge = F.interpolate(x_ge, size=size)
         return x * self.gate(x_ge)
+
+
+
+
+class DoubleAttention(nn.Module):
+
+    def __init__(self, in_channels,c_m=128,c_n=128,reconstruct = True):
+        super().__init__()
+        self.in_channels=in_channels
+        self.reconstruct = reconstruct
+        self.c_m=c_m
+        self.c_n=c_n
+        self.convA=nn.Conv2d(in_channels,c_m,1)
+        self.convB=nn.Conv2d(in_channels,c_n,1)
+        self.convV=nn.Conv2d(in_channels,c_n,1)
+        if self.reconstruct:
+            self.conv_reconstruct = nn.Conv2d(c_m, in_channels, kernel_size = 1)
+        self.init_weights()
+
+
+    def init_weights(self):
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                init.kaiming_normal_(m.weight, mode='fan_out')
+                if m.bias is not None:
+                    init.constant_(m.bias, 0)
+            elif isinstance(m, nn.BatchNorm2d):
+                init.constant_(m.weight, 1)
+                init.constant_(m.bias, 0)
+            elif isinstance(m, nn.Linear):
+                init.normal_(m.weight, std=0.001)
+                if m.bias is not None:
+                    init.constant_(m.bias, 0)
+
+    def forward(self, x):
+        b, c, h,w=x.shape
+        assert c==self.in_channels
+        A=self.convA(x) #b,c_m,h,w
+        B=self.convB(x) #b,c_n,h,w
+        V=self.convV(x) #b,c_n,h,w
+        tmpA=A.view(b,self.c_m,-1)
+        attention_maps = F.softmax(B.view(b, self.c_n, -1), dim=2)
+        attention_vectors = F.softmax(V.view(b, self.c_n, -1), dim=2)
+
+        # step 1: feature gating
+        global_descriptors=torch.bmm(tmpA,attention_maps.permute(0,2,1)) #b.c_m,c_n
+        # step 2: feature distribution
+        tmpZ = global_descriptors.matmul(attention_vectors) #b,c_m,h*w
+        tmpZ=tmpZ.view(b,self.c_m,h,w) #b,c_m,h,w
+        if self.reconstruct:
+            tmpZ=self.conv_reconstruct(tmpZ)
+
+        return tmpZ 
+    
+
+    
+import math, torch
+from torch import nn
+import torch.nn.functional as F
+
+class MLCA(nn.Module):
+    def __init__(self, in_size, local_size=5, gamma = 2, b = 1,local_weight=0.5):
+        super(MLCA, self).__init__()
+
+        # ECA 计算方法
+        self.local_size=local_size
+        self.gamma = gamma
+        self.b = b
+        t = int(abs(math.log(in_size, 2) + self.b) / self.gamma)   # eca  gamma=2
+        k = t if t % 2 else t + 1
+
+        self.conv = nn.Conv1d(1, 1, kernel_size=k, padding=(k - 1) // 2, bias=False)
+        self.conv_local = nn.Conv1d(1, 1, kernel_size=k, padding=(k - 1) // 2, bias=False)
+
+        self.local_weight=local_weight
+
+        self.local_arv_pool = nn.AdaptiveAvgPool2d(local_size)
+        self.global_arv_pool=nn.AdaptiveAvgPool2d(1)
+
+    def forward(self, x):
+        local_arv=self.local_arv_pool(x)
+        global_arv=self.global_arv_pool(local_arv)
+
+        b,c,m,n = x.shape
+        b_local, c_local, m_local, n_local = local_arv.shape
+
+        # (b,c,local_size,local_size) -> (b,c,local_size*local_size) -> (b,local_size*local_size,c) -> (b,1,local_size*local_size*c)
+        temp_local= local_arv.view(b, c_local, -1).transpose(-1, -2).reshape(b, 1, -1)
+        # (b,c,1,1) -> (b,c,1) -> (b,1,c)
+        temp_global = global_arv.view(b, c, -1).transpose(-1, -2)
+
+        y_local = self.conv_local(temp_local)
+        y_global = self.conv(temp_global)
+
+        # (b,c,local_size,local_size) <- (b,c,local_size*local_size)<-(b,local_size*local_size,c) <- (b,1,local_size*local_size*c)
+        y_local_transpose=y_local.reshape(b, self.local_size * self.local_size,c).transpose(-1,-2).view(b, c, self.local_size , self.local_size)
+        # (b,1,c) -> (b,c,1) -> (b,c,1,1)
+        y_global_transpose = y_global.transpose(-1,-2).unsqueeze(-1)
+
+        # 反池化
+        att_local = y_local_transpose.sigmoid()
+        att_global = F.adaptive_avg_pool2d(y_global_transpose.sigmoid(),[self.local_size, self.local_size])
+        att_all = F.adaptive_avg_pool2d(att_global*(1-self.local_weight)+(att_local*self.local_weight), [m, n])
+
+        x = x * att_all
+        return x
