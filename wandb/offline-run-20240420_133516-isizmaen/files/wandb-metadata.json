@@ -1,0 +1,222 @@
+{
+    "os": "Linux-4.18.0-513.9.1.el8_9.x86_64-x86_64-with-glibc2.28",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-04-20T17:35:16.266453",
+    "startedAt": "2024-04-20T17:35:16.122989",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--model",
+        "./ultralytics/cfg/models/v8/yolov8m.yaml",
+        "--data_dir",
+        "./FracAtlas/meta.yaml"
+    ],
+    "state": "running",
+    "program": "/projectnb/dl523/students/rithvik/Fracture_Detection/start_train.py",
+    "codePath": "start_train.py",
+    "git": {
+        "remote": "https://github.com/xalyedaniel/Fracture_Detection.git",
+        "commit": "ce5258f040496f7a123671431e02a2750d97efef"
+    },
+    "email": null,
+    "root": "/projectnb/dl523/students/rithvik/Fracture_Detection",
+    "host": "scc-j01",
+    "username": "rithvik",
+    "executable": "/share/pkg.8/python3/3.10.12/install/bin/python",
+    "cpu_count": 32,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 3976.50190625,
+        "min": 800.0,
+        "max": 4100.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3598.426,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 3601.115,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 3663.028,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 3583.348,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 3676.917,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 3577.107,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 3657.211,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 3527.374,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 3663.599,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 3582.956,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 3656.633,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        },
+        {
+            "current": 4100.0,
+            "min": 800.0,
+            "max": 4100.0
+        }
+    ],
+    "disk": {
+        "total": 19.518142700195312,
+        "used": 13.30759048461914
+    },
+    "gpu": "NVIDIA L40S",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA L40S",
+            "memory_total": 48305799168
+        },
+        {
+            "name": "NVIDIA L40S",
+            "memory_total": 48305799168
+        },
+        {
+            "name": "NVIDIA L40S",
+            "memory_total": 48305799168
+        },
+        {
+            "name": "NVIDIA L40S",
+            "memory_total": 48305799168
+        }
+    ],
+    "memory": {
+        "total": 250.89942169189453
+    }
+}
