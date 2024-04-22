@@ -17,7 +17,7 @@ bus.jpg
 **/__pycache__/
 **/*.pt
 GRAZ_dset/yolov5/images/*
-**/.ipynb_checkpoints
+**/.ipynb_checkpoints/*
 GRAZ_dset/data/images/*
 GRAZ_dset/data/labels/*
 GRAZ_dset/notebooks/*
