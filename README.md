@@ -90,7 +90,7 @@ You can set the value in the `./ultralytics/cfg/default.yaml`.
 ```
 * Traning Steps (yolov8m_128):
 ```
-  python start_train.py --model ./ultralytics/cfg/models/v8/yolov8-128.yaml --data_dir ./GRAZPEDWRI-DX/data/meta.yaml
+  python start_train.py --model ./ultralytics/cfg/models/v8/yolov8_128.yaml --data_dir ./GRAZPEDWRI-DX/data/meta.yaml
 ```
 ### FracAtlas Dataset
 To download the FracAtlas dataset, run
